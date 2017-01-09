@@ -1,14 +1,18 @@
 const axios = require('axios')
 
+
+
 const helper = {
 
 getPosts: () => {},
 
-createPost: () => {},
+createPost: (newPost) => { 
+    return axios.post('/posts/new', { title: newPost })
+},
 
-createComment: () => {},
+createComment: function(/*this will need the id*/) {},
 
-deleteComment: () => {}
+deleteComment: function(/*this will need the id*/) {}
 
 
 }

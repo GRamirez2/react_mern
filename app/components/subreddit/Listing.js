@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import ListItem from './ListItem';
+//import helpers
 
 export default class Listing extends Component {
 	constructor() {
@@ -13,6 +14,7 @@ export default class Listing extends Component {
 	}
 
 	componentDidMount() {
+		//change this to have a helper
 		axios.get('/posts/by-subreddit/' + this.props.params.subredditId).then(posts => {
 			this.setState({ posts: posts.data });
 		});

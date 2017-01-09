@@ -1,5 +1,5 @@
 const express = require('express');
-
+const bodyParser = require('body-parser')
 const logger = require('morgan')
 const mongoose = require('mongoose')
 const app = express();
@@ -33,7 +33,7 @@ db.once("open", function() {
 
 //--------------------------------------------------------------
 
-app.use('/posts', posts);
+app.use( '/posts', posts );
 
 // LISTENER ----------------------------------------------------
 
