@@ -6,6 +6,7 @@ const app = express();
 
 const posts = require('./api/routes/posts');
 
+
 const PORT = process.env.PORT || 3000;
 
 // Run Morgan for Logging  -------------------------------------
@@ -33,7 +34,8 @@ db.once("open", function() {
 
 //--------------------------------------------------------------
 
-app.use( '/posts', posts );
+// app.use( '/posts', posts );
+app.use( '/news', posts );
 
 // LISTENER ----------------------------------------------------
 

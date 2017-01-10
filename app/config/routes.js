@@ -7,7 +7,7 @@ import Listing from '../components/subreddit/Listing';
 module.exports = (
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
-			<Route path="/:subredditId" component={Listing} />
+			<Route path="/:topic" component={Listing} />
 
 			<IndexRoute component={Listing} />
     </Route>

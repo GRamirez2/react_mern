@@ -7,7 +7,7 @@ const helper = {
 getPosts: () => {},
 
 createPost: (newPost) => { 
-    return axios.post('/posts/new', { title: newPost })
+    return axios.post('/news/post', { title: newPost })
 },
 
 createComment: function(/*this will need the id*/) {},

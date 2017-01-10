@@ -13,16 +13,31 @@ export default class Listing extends Component {
 		}
 	}
 
-	componentDidMount() {
+	// componentDidMount() {
+	// 	//change this to have a helper
+	// 	axios.get('/posts/by-subreddit/' + this.props.params.subredditId).then(posts => {
+	// 		this.setState({ posts: posts.data });
+	// 	});
+	// }
+
+	// componentWillReceiveProps(nextProps) {
+	// 	if (this.props.params.subredditId !== nextProps.params.subredditId) {
+	// 		axios.get('/posts/by-subreddit/' + nextProps.params.subredditId).then(posts => {
+	// 			this.setState({ posts: posts.data });
+	// 		});
+	// 	}
+	// }
+
+		componentDidMount() {
 		//change this to have a helper
-		axios.get('/posts/by-subreddit/' + this.props.params.subredditId).then(posts => {
+		axios.get('/news/search/' + this.props.params.topic).then(posts => {
 			this.setState({ posts: posts.data });
 		});
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (this.props.params.subredditId !== nextProps.params.subredditId) {
-			axios.get('/posts/by-subreddit/' + nextProps.params.subredditId).then(posts => {
+		componentWillReceiveProps(nextProps) {
+		if (this.props.params.topic !== nextProps.params.topic) {
+			axios.get('/news/search/' + nextProps.params.topic).then(posts =>{
 				this.setState({ posts: posts.data });
 			});
 		}
