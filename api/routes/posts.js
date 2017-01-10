@@ -30,10 +30,15 @@ router.get('/search/:topic', (req, res) => {
 
 router.get('/news', (req, res) => {
 
-	Post.find({}, (err, results) => {
-		res.json(results);
+	Post.find({}).exec( (err, results) => {
+		if ( err ){
+			console.log( err )
+		}else{
+		res.send(results);
+		}
 	});
 });
+
 
 
 //--------------------------------------------------

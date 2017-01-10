@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import helper from './utils/helpers'
+import Listing from './subreddit/Listing'
+import ListItem from './subreddit/Listing'
 
 export default class Main extends Component {
 	constructor(){
@@ -37,7 +39,7 @@ export default class Main extends Component {
 				<div>
 						<form onSubmit={this.handleSubmit}>
 								<div className="form-group">
-									<label htmlFor="createNewPost">Create New Post</label>
+									<label htmlFor="createNewPost">Create New Topic</label>
 									<input value={this.state.post} onChange={this.handleChange} type="text" className="form-control" id="createNewPost" placeholder="New Post Topic" />
 								</div>
 						</form>
@@ -45,6 +47,9 @@ export default class Main extends Component {
 				</div>
 
 	      <div className="row">
+					{/* <Listing posts={this.state.post} /> */}
+					{ /* <ListItem /> */}
+					
 	        {/* This code will dump the correct Child Component */}
 	        {this.props.children}
 	      </div>

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-
 import axios from 'axios';
+
 import ListItem from './ListItem';
-//import helpers
+import helper from  '../utils/helpers';
 
 export default class Listing extends Component {
 	constructor() {
 		super();
 
 		this.state = {
-			posts: []
+			posts: [],
+			topic: []
 		}
 	}
 
@@ -30,15 +31,21 @@ export default class Listing extends Component {
 
 		componentDidMount() {
 		// change this to have a helper
-		axios.get('/news/search/' + this.props.params.subredditId).then(posts => {
+		axios.get('/news/search/' + this.props.params.topic).then(posts => {
 			this.setState({ posts: posts.data });
 		});
-		// console.log(this.props.params)
+		// console.log(this.state.posts.data) this is not working
+
+		helper.getPosts().then(function(response){
+			console.log("listing", response)
+			this.setState( {topic: response.data.topic} )
+		}.bind(this))
+		
 	}
 
 		componentWillReceiveProps(nextProps) {
-		if (this.props.params.subredditId !== nextProps.params.subredditId) {
-			axios.get('/news/search/' + nextProps.params.subredditId).then(posts =>{
+		if (this.props.params.topic !== nextProps.params.topic) {
+			axios.get('/news/search/' + nextProps.params.topic).then(posts =>{
 				this.setState({ posts: posts.data });
 			});
 		}
@@ -46,9 +53,13 @@ export default class Listing extends Component {
 
 	render() {
 		return (
-			<ul>
-				{this.state.posts.map(post => <ListItem key={post._id} post={post} />)}
-			</ul>
+			<div>
+				{this.props.posts}
+				{this.state.topic}
+				<ul>
+					{this.state.posts.map(post => <ListItem key={post._id} post={post} />)}
+				</ul>
+			</div>
 		);
 	}
 }
