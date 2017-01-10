@@ -29,15 +29,16 @@ export default class Listing extends Component {
 	// }
 
 		componentDidMount() {
-		//change this to have a helper
-		axios.get('/news/search/' + this.props.params.topic).then(posts => {
+		// change this to have a helper
+		axios.get('/news/search/' + this.props.params.subredditId).then(posts => {
 			this.setState({ posts: posts.data });
 		});
+		// console.log(this.props.params)
 	}
 
 		componentWillReceiveProps(nextProps) {
-		if (this.props.params.topic !== nextProps.params.topic) {
-			axios.get('/news/search/' + nextProps.params.topic).then(posts =>{
+		if (this.props.params.subredditId !== nextProps.params.subredditId) {
+			axios.get('/news/search/' + nextProps.params.subredditId).then(posts =>{
 				this.setState({ posts: posts.data });
 			});
 		}
