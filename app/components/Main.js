@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
 import helper from './utils/helpers'
+
 import Listing from './subreddit/Listing'
-import ListItem from './subreddit/Listing'
+// import ListItem from './subreddit/ListItem'
 
 export default class Main extends Component {
 	constructor(){
@@ -47,9 +48,10 @@ export default class Main extends Component {
 				</div>
 
 	      <div className="row">
-					{/* <Listing posts={this.state.post} /> */}
-					{ /* <ListItem /> */}
 					
+					<p>From Main component, this is state.post => {this.state.post}</p>
+					
+					{/* <Listing /> I dont' want this to list twice*/}
 	        {/* This code will dump the correct Child Component */}
 	        {this.props.children}
 	      </div>

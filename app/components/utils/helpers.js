@@ -5,7 +5,7 @@ const axios = require('axios')
 const helper = {
 
 getPosts: () => {
-    return axios.get('/news')
+    return axios.get('/news/topics')
 },
 
 createPost: (newPost) => { 

@@ -32,13 +32,13 @@ export default class Listing extends Component {
 		componentDidMount() {
 		// change this to have a helper
 		axios.get('/news/search/' + this.props.params.topic).then(posts => {
-			this.setState({ posts: posts.data });
+			this.setState({ topic: posts.data });
 		});
-		// console.log(this.state.posts.data) this is not working
+		
 
 		helper.getPosts().then(function(response){
 			console.log("listing", response)
-			this.setState( {topic: response.data.topic} )
+			this.setState( {topic: response.data} )
 		}.bind(this))
 		
 	}
@@ -46,7 +46,7 @@ export default class Listing extends Component {
 		componentWillReceiveProps(nextProps) {
 		if (this.props.params.topic !== nextProps.params.topic) {
 			axios.get('/news/search/' + nextProps.params.topic).then(posts =>{
-				this.setState({ posts: posts.data });
+				this.setState({ topic: posts.data });
 			});
 		}
 	}
@@ -54,10 +54,11 @@ export default class Listing extends Component {
 	render() {
 		return (
 			<div>
-				{this.props.posts}
-				{this.state.topic}
+				<h2>A list of Topics to read and comment on (Listing)</h2>
 				<ul>
-					{this.state.posts.map(post => <ListItem key={post._id} post={post} />)}
+					{this.state.topic.map((topic1) => <ListItem key={topic1._id} topic={topic1} />)}
+					<p>from Listing component inside list</p>
+					<p>{this.state.topic.topic}</p>
 				</ul>
 			</div>
 		);

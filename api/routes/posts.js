@@ -28,7 +28,7 @@ router.get('/search/:topic', (req, res) => {
 
 //---------------------------------------------------------------------------
 
-router.get('/news', (req, res) => {
+router.get('/topics', (req, res) => {
 
 	Post.find({}).exec( (err, results) => {
 		if ( err ){
