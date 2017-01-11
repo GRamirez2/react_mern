@@ -62,13 +62,13 @@ router.get('/topics', (req, res) => {
 // 	})
 
 	router.post('/post', ( req, res ) => {
-	var newPostTopic = req.body.title.toLowerCase();
+	var newPostTopic = req.body.topic.toLowerCase();
 	newPostTopic = newPostTopic.replace(/ /g, '');
 
 	Post.create({
-		title: newPostTopic,
-		content: "This is new content hardocoded in my posts.js",
-		subredditId: "test"
+		topic: newPostTopic,
+		snippet: "This is the snippet, hardcoded, from routes/posts.js",
+		title: "hardcoded title these are placeholder"
 	}, function( err ) {
 			if ( err ) {
 				console.log( err )

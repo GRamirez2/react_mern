@@ -9,7 +9,8 @@ export default class Main extends Component {
 	constructor(){
 		super()
 		this.state = {
-			post: ""
+			topic: "",
+			snippet: ""
 		}
 
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,20 +18,18 @@ export default class Main extends Component {
 	}
 
 	handleChange(e){
-		this.setState({ post: e.target.value })
+		this.setState({ topic: e.target.value })
 	}
 
 	handleSubmit(e){
 		e.preventDefault()
-		// let createNewPost = document.querySelector('#createNewPost').value
-		//let createNewPost = e.target.value
-		helper.createPost(this.state.post).then(function(){
+		helper.createPost(this.state.topic).then(function(){
 			console.log("New Post Sent to DB")
 		}.bind(this));
 	}
 
 	render() {
-		console.log("on main.js");//tobe removed
+		// console.log("on main.js")
 		return (
 			<div className="container">
 	      <div className="jumbotron">
@@ -40,9 +39,16 @@ export default class Main extends Component {
 				<div>
 						<form onSubmit={this.handleSubmit}>
 								<div className="form-group">
-									<label htmlFor="createNewPost">Create New Topic</label>
-									<input value={this.state.post} onChange={this.handleChange} type="text" className="form-control" id="createNewPost" placeholder="New Post Topic" />
+									<label htmlFor="createNewTopic">Create New Topic</label>
+									<input value={this.state.topic} onChange={this.handleChange} type="text" className="form-control" id="createNewTopic" placeholder="New Post Topic" />
 								</div>
+
+								<div className="form-group">
+									<label htmlFor="createNewSnippet">Your Topic's Snippet</label>
+									<input value={this.state.snippet} onChange={this.handleChange} type="text" className="form-control" id="createNewSnippet" placeholder="i.e., More evidence that Donald Trump is an idiot" />
+								</div>
+
+
 						</form>
 						<hr />
 				</div>

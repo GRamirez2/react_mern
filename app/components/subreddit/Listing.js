@@ -38,7 +38,8 @@ export default class Listing extends Component {
 
 		helper.getPosts().then(function(response){
 			console.log("listing", response)
-			this.setState( {topic: response.data} )
+			this.setState( {topic: response.data} );
+			console.log("state.topic", this.state.topic)
 		}.bind(this))
 		
 	}
@@ -56,9 +57,9 @@ export default class Listing extends Component {
 			<div>
 				<h2>A list of Topics to read and comment on (Listing)</h2>
 				<ul>
-					{this.state.topic.map((topic1) => <ListItem key={topic1._id} topic={topic1} />)}
 					<p>from Listing component inside list</p>
-					<p>{this.state.topic.topic}</p>
+					{this.state.topic.map((topic1) => <ListItem key={topic1._id} topic={topic1} />)}
+					
 				</ul>
 			</div>
 		);

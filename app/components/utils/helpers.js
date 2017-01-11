@@ -9,7 +9,7 @@ getPosts: () => {
 },
 
 createPost: (newPost) => { 
-    return axios.post('/news/post', { title: newPost })
+    return axios.post('/news/post', { topic: newPost })
 },
 
 createComment: function(/*this will need the id*/) {},
