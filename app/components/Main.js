@@ -18,18 +18,25 @@ export default class Main extends Component {
 	}
 
 	handleChange(e){
-		this.setState({ topic: e.target.value })
+		var newState = {};
+		newState[e.target.id] = e.target.value;
+    this.setState(newState);
+
 	}
 
 	handleSubmit(e){
 		e.preventDefault()
-		helper.createPost(this.state.topic).then(function(){
+		helper.createPost(this.state.topic, this.state.snippet).then(function(){
 			console.log("New Post Sent to DB")
 		}.bind(this));
+		this.setState({
+			topic: "",
+			snippet: ""
+		})
 	}
 
 	render() {
-		// console.log("on main.js")
+		// console.log(this.props.children)
 		return (
 			<div className="container">
 	      <div className="jumbotron">
@@ -40,14 +47,19 @@ export default class Main extends Component {
 						<form onSubmit={this.handleSubmit}>
 								<div className="form-group">
 									<label htmlFor="createNewTopic">Create New Topic</label>
-									<input value={this.state.topic} onChange={this.handleChange} type="text" className="form-control" id="createNewTopic" placeholder="New Post Topic" />
+									<input value={this.state.topic} onChange={this.handleChange} type="text" className="form-control" id="topic" placeholder="New Post Topic" />
 								</div>
 
 								<div className="form-group">
 									<label htmlFor="createNewSnippet">Your Topic's Snippet</label>
-									<input value={this.state.snippet} onChange={this.handleChange} type="text" className="form-control" id="createNewSnippet" placeholder="i.e., More evidence that Donald Trump is an idiot" />
+									<input value={this.state.snippet} onChange={this.handleChange} type="text" className="form-control" id="snippet" placeholder="i.e., More evidence that Donald Trump is an idiot" />
 								</div>
 
+								<div className="text-right">
+								<button className="btn btn-primary" type="submit">
+                    Submit
+                </button>
+								</div>
 
 						</form>
 						<hr />
@@ -57,9 +69,9 @@ export default class Main extends Component {
 					
 					<p>From Main component, this is state.post => {this.state.post}</p>
 					
-					{/* <Listing /> I dont' want this to list twice*/}
-	        {/* This code will dump the correct Child Component */}
-	        {this.props.children}
+					<Listing /> 
+					{/* This code will dump the correct Child Component */}
+	        {/* {this.props.children} */}
 	      </div>
 	    </div>
 		);

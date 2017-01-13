@@ -5,8 +5,8 @@ import ListItem from './ListItem';
 import helper from  '../utils/helpers';
 
 export default class Listing extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			posts: [],
@@ -31,7 +31,7 @@ export default class Listing extends Component {
 
 		componentDidMount() {
 		// change this to have a helper
-		axios.get('/news/search/' + this.props.params.topic).then(posts => {
+		axios.get('/news/search/' + this.props.topic).then(posts => {
 			this.setState({ topic: posts.data });
 		});
 		
@@ -45,8 +45,8 @@ export default class Listing extends Component {
 	}
 
 		componentWillReceiveProps(nextProps) {
-		if (this.props.params.topic !== nextProps.params.topic) {
-			axios.get('/news/search/' + nextProps.params.topic).then(posts =>{
+		if (this.props.topic !== nextProps.topic) {
+			axios.get('/news/search/' + nextProps.topic).then(posts =>{
 				this.setState({ topic: posts.data });
 			});
 		}
@@ -57,7 +57,7 @@ export default class Listing extends Component {
 			<div>
 				<h2>A list of Topics to read and comment on (Listing)</h2>
 				<ul>
-					<p>from Listing component inside list</p>
+					
 					{this.state.topic.map((topic1) => <ListItem key={topic1._id} topic={topic1} />)}
 					
 				</ul>

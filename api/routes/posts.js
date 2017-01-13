@@ -65,9 +65,12 @@ router.get('/topics', (req, res) => {
 	var newPostTopic = req.body.topic.toLowerCase();
 	newPostTopic = newPostTopic.replace(/ /g, '');
 
+	var newPostSnippet = req.body.snippet.toLowerCase();
+	newPostSnippet = newPostSnippet.replace(/ /g, '');
+
 	Post.create({
 		topic: newPostTopic,
-		snippet: "This is the snippet, hardcoded, from routes/posts.js",
+		snippet: newPostSnippet,
 		title: "hardcoded title these are placeholder"
 	}, function( err ) {
 			if ( err ) {

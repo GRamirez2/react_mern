@@ -8,8 +8,8 @@ getPosts: () => {
     return axios.get('/news/topics')
 },
 
-createPost: (newPost) => { 
-    return axios.post('/news/post', { topic: newPost })
+createPost: (newPost, newSnippet) => { 
+    return axios.post('/news/post', { topic: newPost, snippet: newSnippet })
 },
 
 createComment: function(/*this will need the id*/) {},
