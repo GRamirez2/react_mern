@@ -31,8 +31,7 @@ export default class Main extends Component {
 		}.bind(this));
 		this.setState({
 			topic: "",
-			snippet: "",
-			trigger: true
+			snippet: ""
 		})
 	}
 
@@ -70,7 +69,7 @@ export default class Main extends Component {
 					
 					<p>From Main component, this is state.post => {this.state.post}</p>
 					
-					<Listing trigger={this.state.trigger}/> 
+					<Listing /> 
 					{/* This code will dump the correct Child Component */}
 	        {/* {this.props.children} */}
 	      </div>

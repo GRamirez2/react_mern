@@ -10,7 +10,8 @@ export default class Listing extends Component {
 
 		this.state = {
 			posts: [],
-			topic: []
+			topic: [],
+			trigger: ""
 		}
 	}
 
@@ -28,11 +29,7 @@ export default class Listing extends Component {
 	// 		});
 	// 	}
 	// }
-		// shouldComponentUpdate(){
-		// 	if (this.props.trigger == true){
-		// 		return true;
-		// 	}else {return false}
-		// }
+		
 
 		componentDidMount() {
 		// change this to have a helper
@@ -55,6 +52,10 @@ export default class Listing extends Component {
 				this.setState({ topic: posts.data });
 			});
 		}
+			helper.getPosts().then(function(response){
+				this.setState( {topic: response.data} );
+				// console.log("state.topic", this.state.topic)
+			}.bind(this))
 	}
 
 	render() {
