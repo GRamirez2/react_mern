@@ -30,7 +30,7 @@ router.get('/search/:topic', (req, res) => {
 
 router.get('/topics', (req, res) => {
 
-	Post.find({}).exec( (err, results) => {
+	Post.find({}).sort( { _id: -1 } ).exec( (err, results) => {
 		if ( err ){
 			console.log( err )
 		}else{

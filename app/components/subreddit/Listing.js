@@ -28,6 +28,11 @@ export default class Listing extends Component {
 	// 		});
 	// 	}
 	// }
+		// shouldComponentUpdate(){
+		// 	if (this.props.trigger == true){
+		// 		return true;
+		// 	}else {return false}
+		// }
 
 		componentDidMount() {
 		// change this to have a helper

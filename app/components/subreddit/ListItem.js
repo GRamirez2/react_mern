@@ -8,6 +8,7 @@ export default class ListItem extends Component {
 				{/*<p>{this.props.topic.title}</p>*/}
 				<p>{this.props.topic.snippet}</p>
 				
+				
 			</li>
 		);
 	}
