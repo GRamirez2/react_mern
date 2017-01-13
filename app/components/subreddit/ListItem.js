@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+
 
 export default class ListItem extends Component {
 	render() {
 		return (
-			<li>
-				<h2>{this.props.topic.topic}</h2>
-				{/*<p>{this.props.topic.title}</p>*/}
-				<p>{this.props.topic.snippet}</p>
-				
-				
-			</li>
+
+				<li>
+					
+					<Link
+					key={this.props.topic._id}
+					to={`/find/${this.props.topic.topic}`}
+					>
+					<h1>{this.props.topic.topic}</h1>
+					</Link>
+					<p>{this.props.topic.snippet}</p>
+					
+				</li>
+
 		);
 	}
 }

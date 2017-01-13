@@ -15,22 +15,7 @@ export default class Listing extends Component {
 		}
 	}
 
-	// componentDidMount() {
-	// 	//change this to have a helper
-	// 	axios.get('/posts/by-subreddit/' + this.props.params.subredditId).then(posts => {
-	// 		this.setState({ posts: posts.data });
-	// 	});
-	// }
-
-	// componentWillReceiveProps(nextProps) {
-	// 	if (this.props.params.subredditId !== nextProps.params.subredditId) {
-	// 		axios.get('/posts/by-subreddit/' + nextProps.params.subredditId).then(posts => {
-	// 			this.setState({ posts: posts.data });
-	// 		});
-	// 	}
-	// }
-		
-
+	
 		componentDidMount() {
 		// change this to have a helper
 		axios.get('/news/search/' + this.props.topic).then(posts => {
@@ -53,11 +38,11 @@ export default class Listing extends Component {
 			});
 		}
 			helper.getPosts().then(function(response){
+				//console.log(nextProps)
 				this.setState( {topic: response.data} );
-				// console.log("state.topic", this.state.topic)
 			}.bind(this))
 	}
-
+       
 	render() {
 		return (
 			<div>
